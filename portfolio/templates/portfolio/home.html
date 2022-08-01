@@ -1,0 +1,29 @@
+{% extends "portfolio/layout.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center my-3">
+	<div class="col-3">
+		<img src="{% static 'portfolio/MeEmoji.png' %}" class="img-fluid" alt="Responsive image">
+	</div>
+</div>
+
+<div class="row justify-content-center mb-3">
+	<div class="col-md-9 text-center">
+		<h1 id="hometext" class="font-weight-bold">Virgilio Murillo is an Artificial Intelligence Engineer and a software developer</h1>
+	</div>
+</div>
+
+<hr>
+
+<div class="row justify-content-center mb-3">
+	{% for tag in tags %}
+	<a type="button" class="btn btn-outline-dark btn-sm"href="{% url 'project:tag_view' tag.id%}" style="font-family:serif;background:{{tag.color}};opacity: 0.7">{{tag.title}}</a>
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+

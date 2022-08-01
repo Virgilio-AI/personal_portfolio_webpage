@@ -1,0 +1,70 @@
+{% extends "portfolio/layout.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<h2 class="mt-5" style='display: flex;justify-content: center;align-items: center;'>{{project.title}}</h2>
+
+
+<div style='display: flex;justify-content: center'>
+
+	<a href="{% url 'project:project_view' project.id %}">
+		<img src="{{ project.image.url }}" class="img-fluid mb-2" style='max-height:400px'>
+	</a>
+
+</div>
+
+<a href="{{project.url}}" style='display: flex;justify-content: center'>
+	<h4>
+		{{project.urlClean}}
+	</h4>
+</a>
+
+<h5 class='mt-5' style='display: flex;justify-content: center' >
+	{{project.description}}
+</h5>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+
+
+	{% if subprojects.count >= 1 %}
+	<h2 class="mt-5">Sub projects</h2>
+	<hr>
+	<div class="row">
+
+		{% for p in subprojects %}
+
+		<div class="col-lg-4 col-md-6">
+
+
+
+			<a href="{% url 'project:project_view' p.id %}">
+				<img src="{{ p.image.url }}" class="img-fluid mb-2" style='max-height:200px'>
+			</a>
+
+
+			<h3>{{ p.title }}</h3>
+			<p>{{ p.description }}</p>
+			{% for tag in p.tags.all %} <a type="button" class="btn btn-outline-dark btn-sm"href="{% url 'project:tag_view' tag.id%}" style="font-family:serif;background:{{tag.color}};opacity: 0.6">{{tag.title}}</a> {% endfor %}
+		</div>
+
+		{% endfor %}
+
+
+		{% endif %}
+
+
+
+		{% endblock %}
+
