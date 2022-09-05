@@ -26,9 +26,9 @@ def home(request):
 
 
 
-def tag_view(request,tag_id):
+def tag_view(request,tag_name):
 	dic = {}
-	tag = get_object_or_404(Project_Tag,pk=tag_id)
+	tag = get_object_or_404(Project_Tag,tag_name=tag_name)
 	dic['tag'] = tag
 	projects = tag.project_set.all()
 	certificates = tag.file_pdf_set.all()
@@ -47,19 +47,12 @@ def project_view(request,project_id):
 	return render(request,'portfolio/project_detail.html',dic)
 
 
-def pdf_view(request,pdf_id,resume):
+def pdf_view(request,file_name):
 	dic = {}
-	if resume == "yes":
-		pdf_files = File_pdf.objects.filter(main_resume=True)
-		pdf_file = pdf_files[0]
-		dic['pdf'] = pdf_file.pdf
-		dic['title'] = pdf_file.title
-		dic['img'] = pdf_file.image
-	else:
-		pdf_file = get_object_or_404(File_pdf,pk=pdf_id)
-		dic['pdf'] = pdf_file.pdf
-		dic['title'] = pdf_file.title
-		dic['img'] = pdf_file.image
+	pdf_file = get_object_or_404(File_pdf,file_name=file_name)
+	dic['pdf'] = pdf_file.pdf
+	dic['title'] = pdf_file.title
+	dic['img'] = pdf_file.image
 	return render(request,'portfolio/show_pdf.html',dic)
 
 

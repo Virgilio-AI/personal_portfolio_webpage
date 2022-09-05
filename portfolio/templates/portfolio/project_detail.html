@@ -56,7 +56,7 @@
 
 			<h3>{{ p.title }}</h3>
 			<p>{{ p.description }}</p>
-			{% for tag in p.tags.all %} <a type="button" class="btn btn-outline-dark btn-sm"href="{% url 'project:tag_view' tag.id%}" style="font-family:serif;background:{{tag.color}};opacity: 0.6">{{tag.title}}</a> {% endfor %}
+			{% for tag in p.tags.all %} <a type="button" class="btn btn-outline-dark btn-sm"href="{% url 'project:tag_view' tag.tag_name%}" style="font-family:serif;background:{{tag.color}};opacity: 0.6">{{tag.title}}</a> {% endfor %}
 		</div>
 
 		{% endfor %}

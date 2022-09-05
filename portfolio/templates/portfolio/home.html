@@ -20,7 +20,7 @@
 
 <div class="row justify-content-center mb-3">
 	{% for tag in tags %}
-	<a type="button" class="btn btn-outline-dark btn-sm"href="{% url 'project:tag_view' tag.id%}" style="font-family:serif;background:{{tag.color}};opacity: 0.7">{{tag.title}}</a>
+	<a type="button" class="btn btn-outline-dark btn-sm"href="{% url 'project:tag_view' tag.tag_name%}" style="font-family:serif;background:{{tag.color}};opacity: 0.7">{{tag.title}}</a>
 	{% endfor %}
 </div>
 
