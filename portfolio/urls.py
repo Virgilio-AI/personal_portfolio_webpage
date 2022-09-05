@@ -13,8 +13,8 @@ app_name = 'project'
 urlpatterns = [
 		path('home/',views.home,name='index'),
 		path('',views.home,name='index'),
-		path('tag_view/<int:tag_id>/',views.tag_view,name = 'tag_view'),
+		path('<str:tag_name>/',views.tag_view,name = 'tag_view'),
 		path('project_view/<int:project_id>/',views.project_view,name = 'project_view'),
-		path('pdf_view/<int:pdf_id>/<str:resume>/',views.pdf_view,name = 'pdf_view'),
-] 
+		path('pdf_view/<str:file_name>/',views.pdf_view,name = 'pdf_view'),
+]
 
