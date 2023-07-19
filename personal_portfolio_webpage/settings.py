@@ -26,6 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+SECRET_KEY = "hjfsldahfd"
 
 # Application definition
 
